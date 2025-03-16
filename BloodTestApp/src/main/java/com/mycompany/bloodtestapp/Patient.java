@@ -1,25 +1,33 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.bloodtestapp;
 
-/**
- *
- * @author Hamilton1
- */
 public class Patient {
 
     private String name;
     private String gp;
+    private int age;
+    private boolean fromHospitalWard;  
 
     public Patient() {
         this.name = new String();
         this.gp = new String();
+        this.age = 0;
+        this.fromHospitalWard = false; 
+    }
+
+    public void setFromHospitalWard(boolean fromHospitalWard) {
+        this.fromHospitalWard = fromHospitalWard;
+    }
+
+    public boolean isFromHospitalWard() {
+        return this.fromHospitalWard;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public void setGp(String gp) {
@@ -28,6 +36,10 @@ public class Patient {
 
     public String getName() {
         return name;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public String getGp() {

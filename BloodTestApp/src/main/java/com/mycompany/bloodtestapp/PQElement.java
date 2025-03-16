@@ -22,7 +22,7 @@ public class PQElement {
         return priority;
     }
 
-    public void setiKey(String priority) {
+    public void setPriority(String priority) {
         this.priority = priority;
     }
 
@@ -33,10 +33,15 @@ public class PQElement {
     public void setPatient(Patient inPatient) {
         this.patient = inPatient;
     }
+    
+     public boolean isFromHospitalWard() {
+        return patient.isFromHospitalWard();  
+    }
 
     public String printPatient() {
         String sMessage;
-        sMessage = "****\nName: " + patient.getName() + "\nGP Details: " + patient.getGp();
+        sMessage = "****\nName: " + patient.getName() + "\nAge: " + patient.getAge() + "\nFrom Hospital Ward?: " + patient.isFromHospitalWard() 
+                +  "\nGP Details: " + patient.getGp();
         return sMessage;
     }
 }

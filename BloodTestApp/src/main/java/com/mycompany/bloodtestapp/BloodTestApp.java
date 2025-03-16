@@ -13,5 +13,6 @@ public class BloodTestApp {
     public static void main(String[] args) {
         BloodGUI gui = new BloodGUI();
         gui.setVisible(true);
+        
     }
 }
