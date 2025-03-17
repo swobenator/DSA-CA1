@@ -105,6 +105,11 @@ public class MyPriorityQueue implements PQInterface {
         //remove  the first element (highest priority patient)
         return thePQueue.remove(0);
     }
+    
+    @Override
+    public Object getElement(int i){
+        return thePQueue.get(i);
+    }
 
     @Override
     public String printPQueue() {

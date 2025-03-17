@@ -13,9 +13,9 @@ public class PQElement {
     private String priority;
     private Patient patient;
 
-    public PQElement(String priority, Patient inPatient) {
+    public PQElement(String priority, Patient patient) {
         this.priority = priority;
-        this.patient = inPatient;
+        this.patient = patient;
     }
 
     public String getPriority() {
@@ -30,8 +30,8 @@ public class PQElement {
         return patient;
     }
 
-    public void setPatient(Patient inPatient) {
-        this.patient = inPatient;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
     
      public boolean isFromHospitalWard() {

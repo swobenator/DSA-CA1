@@ -4,10 +4,7 @@
  */
 package com.mycompany.bloodtestapp;
 
-/**
- *
- * @author Hamilton1
- */
+
 public interface PQInterface {
 
     public void enqueue(String priority, Object thePatient);
@@ -15,6 +12,8 @@ public interface PQInterface {
     public Object dequeue();
 
     public int size();
+    
+    public Object getElement(int i);
 
     public boolean isEmpty();
 
