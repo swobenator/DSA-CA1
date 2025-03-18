@@ -1,10 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+// *Author: Soheib 
 package com.mycompany.bloodtestapp;
 
-//NOTE:  we count elements from position 1. First node from the list is on position 1.
+
 public class SLList implements LinearListInterface {
 
     private Node head;
@@ -94,20 +91,18 @@ public class SLList implements LinearListInterface {
             curNode = curNode.getNext();
         }
     }
-                   
+    
+    
+    
+    // recursively traverse and return the string of no-show patients
     @Override
-    public String listNoShows() {
-        StringBuffer result = new StringBuffer();  // Use StringBuffer instead of StringBuilder
-        Node currentNode = head;  // Assuming `head` is the first node in the list
-        result.append("NO SHOW LIST:");
-        while (currentNode != null) {
-            Patient patient = (Patient) currentNode.getElement();  // Get the patient from the node
-            result.append("\nName: ").append(patient.getName()); 
-            result.append("\nAge: ").append(patient.getAge());
-            result.append("\n");  
-            currentNode = currentNode.getNext();  //moveto the next node in the list
+    public String listNoShows(Node currNode) {
+        if (currNode == null) {
+            return ""; // Base case for reaching the end of the list
+        } else {
+            Patient patient = (Patient)currNode.getElement();
+            String result = "*****\nName: " + patient.getName() + "\n Age: " + patient.getAge() + "\n GP Details: " + patient.getGp()+ "\n*****";
+            return result + listNoShows(currNode.getNext()); // recursive call
         }
-
-        return result.toString();  //return the final result string 
     }
 }

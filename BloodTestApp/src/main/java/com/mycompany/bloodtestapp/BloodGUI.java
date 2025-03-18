@@ -1,6 +1,6 @@
 /*
  * BloodGUI.java
- *
+ *Author: Soheib 
  */
 package com.mycompany.bloodtestapp;
 
@@ -8,9 +8,6 @@ import javax.swing.JOptionPane;
 
 public class BloodGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form BloodGUI
-     */
     private PQInterface myPQueue;
     private SLList noShowList = new SLList();
 
@@ -189,37 +186,40 @@ public class BloodGUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(ageTf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                             .addComponent(gpTf, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(priorityTf, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nameTf)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
                                 .addComponent(yesRb)
                                 .addGap(18, 18, 18)
-                                .addComponent(noRb))
-                            .addComponent(priorityTf, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nameTf))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(noRb)))))
+                .addGap(0, 28, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(appTitleLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(addBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(listBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addNoShowBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(numPatientsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(printNoShowBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(removeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(97, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(listBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(addNoShowBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(printNoShowBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(exitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(numPatientsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                                .addComponent(removeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,14 +249,14 @@ public class BloodGUI extends javax.swing.JFrame {
                     .addComponent(priorityTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(removeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numPatientsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(listBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(printNoShowBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,29 +280,43 @@ public class BloodGUI extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
+        //declare variables
         String name, gp;
         String priority;
         int age;
         boolean fromWard;
+        try {
+            //get tect from name,GP and age text fields
+            name = nameTf.getText();
+            gp = gpTf.getText();
+            age = Integer.parseInt(ageTf.getText());
+            //get value of radio buttin
+            fromWard = yesRb.isSelected();
+            priority = priorityTf.getText();
 
-        Patient newPatient = new Patient();
-        name = nameTf.getText();
-        gp = gpTf.getText();
-        age = Integer.parseInt(ageTf.getText());
-        fromWard = yesRb.isSelected();
+            //create new patient object
+            //set the patient's details
+            Patient newPatient = new Patient();
+            newPatient.setName(name);
+            newPatient.setGp(gp);
+            newPatient.setAge(age);
+            newPatient.setFromHospitalWard(fromWard);
 
-        newPatient.setName(name);
-        newPatient.setGp(gp);
-        newPatient.setAge(age);
-        newPatient.setFromHospitalWard(fromWard);
+            //add the patient to the queue
+            myPQueue.enqueue(priority, newPatient);
 
-        priority = priorityTf.getText();
-        myPQueue.enqueue(priority, newPatient);
+            //print a success message
+            displayTa.append(nameTf.getText() + " has been successfully added to the waiting list\n");
+            nameTf.setText("");
+            gpTf.setText("");
+            priorityTf.setText("");
+            ageTf.setText("");
+        }
+        catch(NumberFormatException e)  {
+            JOptionPane.showMessageDialog(null, "Please Fill in All Above Fields");
+            //System.out.println("Error"+ e);
+        }
 
-        displayTa.append(nameTf.getText() + " has been successfully added to the waiting list\n");
-        nameTf.setText("");
-        gpTf.setText("");
-        priorityTf.setText("");
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
@@ -339,7 +353,13 @@ public class BloodGUI extends javax.swing.JFrame {
 
     private void printNoShowBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printNoShowBtnActionPerformed
         // TODO add your handling code here:
-        displayTa.append(noShowList.listNoShows());
+        String noShowListStr = noShowList.listNoShows((Node) noShowList.get(0));
+
+        if (noShowListStr.isEmpty()) {
+            displayTa.append("There are no patients on the No Show list.\n");
+        } else {
+            displayTa.append("\nNo Show List:\n" + noShowListStr);
+        }
     }//GEN-LAST:event_printNoShowBtnActionPerformed
 
     private void ageTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageTfActionPerformed
@@ -355,25 +375,25 @@ public class BloodGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_yesRbActionPerformed
 
     private void addNoShowBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNoShowBtnActionPerformed
-        // Show a JOptionPane to get the patient's name
+        //JOptionPane to get the patient's name
         String patientName = JOptionPane.showInputDialog(this, "Enter the patient's name who missed the appointment:");
 
-        // Check if the name is not empty
+        //Checks if the name inpur is not empty
         if (patientName != null && !patientName.isEmpty()) {
             boolean found = false;
 
-            // Traverse through the priority queue to find the patient by name
+            //Traverse through the priority queue to find the patient by name
             for (int i = 0; i < myPQueue.size(); i++) {
-                PQElement pqElement = (PQElement) myPQueue.getElement(i); // Access the patient at index i
+                PQElement pqElement = (PQElement) myPQueue.getElement(i); // access the patient at index i
                 Patient patient = pqElement.getPatient(); // Get the patient from the PQElement
 
-                // If the patient's name matches the input, add them to the No Show list
+                // Iff the patient's name matches the input, add them to the noShow list
                 if (patient.getName().equalsIgnoreCase(patientName)) {
-                    // Add the patient to the No Show list
+                    //add the patient to the No Show list
                     noShowList.add(patient);
                     displayTa.append(patient.getName() + " has been added to the No Show list.\n");
                     found = true;
-                    break;  // Exit the loop once the patient is found and added
+                    break;  //break the loop once the patient is found and added
                 }
             }
 

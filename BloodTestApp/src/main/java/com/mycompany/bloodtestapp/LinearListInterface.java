@@ -4,10 +4,7 @@
  */
 package com.mycompany.bloodtestapp;
 
-/**
- *
- * @author Hamilton1
- */
+
 public interface LinearListInterface {
 
     public boolean isEmpty();
@@ -22,5 +19,5 @@ public interface LinearListInterface {
 
     public void add(Object element);
 
-    public String listNoShows();
+    public String listNoShows(Node currNode);
 }

@@ -1,12 +1,11 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package com.mycompany.bloodtestapp;
 
 /**
  *
- * @author sohei
+ * @author soheib
  */
 public class BloodTestApp {
 
