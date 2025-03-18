@@ -10,7 +10,9 @@ package com.mycompany.bloodtestapp;
 public class BloodTestApp {
 
     public static void main(String[] args) {
+        //create an instance of the BloodGUI class
         BloodGUI gui = new BloodGUI();
+        //set the BloodGUI class to visible
         gui.setVisible(true);
         
     }

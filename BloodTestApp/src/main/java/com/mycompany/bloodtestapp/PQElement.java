@@ -32,6 +32,7 @@ public class PQElement {
         return patient.isFromHospitalWard();  
     }
 
+     //return the patient's details as a string
     public String printPatient() {
         String sMessage;
         sMessage = "****\nName: " + patient.getName() + "\nAge: " + patient.getAge() + "\nFrom Hospital Ward?: " + patient.isFromHospitalWard() 

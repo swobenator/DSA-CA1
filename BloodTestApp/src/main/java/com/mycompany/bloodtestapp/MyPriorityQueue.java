@@ -12,16 +12,19 @@ public class MyPriorityQueue implements PQInterface {
     }
 
     @Override
+    //returns true/false depending on if the arrayList is empty or not
     public boolean isEmpty() {
         return thePQueue.isEmpty();
     }
 
     @Override
+    //returns the size of the arrayList
     public int size() {
         return thePQueue.size();
     }
 
     @Override
+    //queues the object given as an argument based on the the position given by the findInsertPosition metho
     public void enqueue(String priority, Object thePatient) {
         int iIndex;
         PQElement newElement = new PQElement(priority, (Patient) thePatient);
@@ -34,7 +37,8 @@ public class MyPriorityQueue implements PQInterface {
             thePQueue.add(iIndex, newElement);
         }
     }
-
+    
+    //returns the position as an int ,of where the element given as an argument should be in the queue
     private int findInsertPosition(PQElement newElement) {
         boolean bFound = false;
         int iPosition = 0;
@@ -46,7 +50,7 @@ public class MyPriorityQueue implements PQInterface {
             curElement = thePQueue.get(iPosition);
             Patient curPatient = (Patient) curElement.getPatient();
 
-            //hospital ward patients are always prioritized
+            //Hospital ward patients are always prioritized
             if (curPatient.isFromHospitalWard() && !newPatient.isFromHospitalWard()) {
                 iPosition++;
             } else if (!curPatient.isFromHospitalWard() && newPatient.isFromHospitalWard()) {
@@ -78,7 +82,7 @@ public class MyPriorityQueue implements PQInterface {
         String curPriority = curElement.getPriority();
         String newPriority = newElement.getPriority();
 
-        //priority comparison
+        //Priority comparison
         if (curPriority.equalsIgnoreCase("urgent") && !newPriority.equalsIgnoreCase("urgent")) {
             return -1;
         } else if (curPriority.equalsIgnoreCase("medium") && newPriority.equalsIgnoreCase("low")) {
@@ -108,11 +112,13 @@ public class MyPriorityQueue implements PQInterface {
     }
     
     @Override
+    //returns an element based on its index in the arraylist
     public Object getElement(int i){
         return thePQueue.get(i);
     }
 
     @Override
+    //returns a string with the details of all the objects/patients in the queue
     public String printPQueue() {
         StringBuilder printString = new StringBuilder();
         PQElement curElement;

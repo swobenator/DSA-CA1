@@ -8,8 +8,11 @@ import javax.swing.JOptionPane;
 
 public class BloodGUI extends javax.swing.JFrame {
 
+    //declare objects
     private PQInterface myPQueue;
     private SLList noShowList = new SLList();
+    //create an instance of myArrayList
+    myArrayList historyList = new myArrayList();
 
     public BloodGUI() {
         myPQueue = new MyPriorityQueue();
@@ -48,6 +51,7 @@ public class BloodGUI extends javax.swing.JFrame {
         noRb = new javax.swing.JRadioButton();
         yesRb = new javax.swing.JRadioButton();
         addNoShowBtn = new javax.swing.JButton();
+        showHistoryBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,6 +169,13 @@ public class BloodGUI extends javax.swing.JFrame {
             }
         });
 
+        showHistoryBtn.setText("History");
+        showHistoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showHistoryBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -219,7 +230,9 @@ public class BloodGUI extends javax.swing.JFrame {
                                 .addComponent(numPatientsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                                 .addComponent(removeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(showHistoryBtn)
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +243,7 @@ public class BloodGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameJLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ageTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ageLbl))
@@ -247,8 +260,10 @@ public class BloodGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priorityLbl)
                     .addComponent(priorityTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showHistoryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,12 +287,13 @@ public class BloodGUI extends javax.swing.JFrame {
     private void nameTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nameTfActionPerformed
-
+//display the number of patients in the queue
     private void numPatientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numPatientsBtnActionPerformed
         // TODO add your handling code here:
         displayTa.append("There are " + myPQueue.size() + " patients on the waiting list\n");
     }//GEN-LAST:event_numPatientsBtnActionPerformed
 
+    // adds a patient to the queue
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
         //declare variables
@@ -302,9 +318,11 @@ public class BloodGUI extends javax.swing.JFrame {
             newPatient.setAge(age);
             newPatient.setFromHospitalWard(fromWard);
 
+            //add the patient to the history list
+            historyList.add(newPatient);
             //add the patient to the queue
             myPQueue.enqueue(priority, newPatient);
-
+            
             //print a success message
             displayTa.append(nameTf.getText() + " has been successfully added to the waiting list\n");
             nameTf.setText("");
@@ -312,30 +330,34 @@ public class BloodGUI extends javax.swing.JFrame {
             priorityTf.setText("");
             ageTf.setText("");
         }
+        //catches a NumberFormatException error if one of the text fields are empty
         catch(NumberFormatException e)  {
             JOptionPane.showMessageDialog(null, "Please Fill in All Above Fields");
             //System.out.println("Error"+ e);
         }
 
     }//GEN-LAST:event_addBtnActionPerformed
-
+//dequeues the patient with the highest priority
     private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
         // TODO add your handling code here:
-
+        //checks if the queue is not empty
         if (!myPQueue.isEmpty()) {
+            //get the pqElement that is being dequeued 
             PQElement pqElement = (PQElement) myPQueue.dequeue();
+            //create an instance of a patient and give it the value of the patient being dequeued
             Patient patient = (Patient) pqElement.getPatient();
-
+            
+            //display the patient's details on the displayTa text area
             displayTa.append("The doctor will now see " + patient.getName() + "\n");
             displayTa.append("Age: " + patient.getAge() + "\n");
             displayTa.append("From Hospital Ward?: " + patient.isFromHospitalWard() + "\n");
             displayTa.append("GP Details: " + patient.getGp() + "\n");
             displayTa.append("Their priority is: " + pqElement.getPriority() + "\n");
 
-        } else
+        } else //if the queue is empty display a message
             displayTa.append("There are no patients waiting!\n");
     }//GEN-LAST:event_removeBtnActionPerformed
-
+//closes the application
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -344,16 +366,17 @@ public class BloodGUI extends javax.swing.JFrame {
     private void priorityTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priorityTfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_priorityTfActionPerformed
-
+//lists all of the patients in the queue to the displayTa
     private void listBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBtnActionPerformed
         // TODO add your handling code here:
         displayTa.append("The patients on the waiting list are...\n");
         displayTa.append(myPQueue.printPQueue() + "\n");
     }//GEN-LAST:event_listBtnActionPerformed
 
+    //prints all of the patients from the noShow list into the display text area
     private void printNoShowBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printNoShowBtnActionPerformed
         // TODO add your handling code here:
-        String noShowListStr = noShowList.listNoShows((Node) noShowList.get(0));
+        String noShowListStr = noShowList.listElements((Node) noShowList.get(0));
 
         if (noShowListStr.isEmpty()) {
             displayTa.append("There are no patients on the No Show list.\n");
@@ -374,6 +397,7 @@ public class BloodGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_yesRbActionPerformed
 
+//a button for adding a patient by name to the no show list
     private void addNoShowBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNoShowBtnActionPerformed
         //JOptionPane to get the patient's name
         String patientName = JOptionPane.showInputDialog(this, "Enter the patient's name who missed the appointment:");
@@ -404,6 +428,14 @@ public class BloodGUI extends javax.swing.JFrame {
             displayTa.append("No name entered.\n");
         }
     }//GEN-LAST:event_addNoShowBtnActionPerformed
+//prints all patients' details that have been processed even if they no longer exist in the queue
+    private void showHistoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showHistoryBtnActionPerformed
+        // TODO add your handling code here:
+        displayTa.append("\nHistory of Past and Current Patients\n");
+        
+        displayTa.append(historyList.listElements());
+        
+    }//GEN-LAST:event_showHistoryBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
@@ -427,6 +459,7 @@ public class BloodGUI extends javax.swing.JFrame {
     private javax.swing.JLabel priorityLbl;
     private javax.swing.JTextField priorityTf;
     private javax.swing.JButton removeBtn;
+    private javax.swing.JButton showHistoryBtn;
     private javax.swing.ButtonGroup wardRbtn;
     private javax.swing.JRadioButton yesRb;
     // End of variables declaration//GEN-END:variables

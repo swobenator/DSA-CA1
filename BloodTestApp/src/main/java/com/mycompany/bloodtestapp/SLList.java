@@ -95,14 +95,13 @@ public class SLList implements LinearListInterface {
     
     
     // recursively traverse and return the string of no-show patients
-    @Override
-    public String listNoShows(Node currNode) {
+    public String listElements(Node currNode) {
         if (currNode == null) {
             return ""; // Base case for reaching the end of the list
         } else {
             Patient patient = (Patient)currNode.getElement();
             String result = "*****\nName: " + patient.getName() + "\n Age: " + patient.getAge() + "\n GP Details: " + patient.getGp()+ "\n*****";
-            return result + listNoShows(currNode.getNext()); // recursive call
+            return result + listElements(currNode.getNext()); // recursive call
         }
     }
 }

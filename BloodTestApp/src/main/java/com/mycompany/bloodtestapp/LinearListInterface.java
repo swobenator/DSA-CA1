@@ -19,5 +19,4 @@ public interface LinearListInterface {
 
     public void add(Object element);
 
-    public String listNoShows(Node currNode);
 }
